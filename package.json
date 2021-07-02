@@ -1,5 +1,5 @@
 {
-  "name": "joi-to-swagger",
+  "name": "@vikaskanani/joi-to-swagger",
   "version": "5.2.0",
   "description": "",
   "main": "index.js",
