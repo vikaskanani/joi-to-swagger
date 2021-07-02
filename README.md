@@ -1,3 +1,9 @@
+I forked to enable suport for `@joi/date` package.
+
+`Joi.date().format('YYYY-MM-DD')` will have format `date`
+
+---
+
 joi-to-swagger
 ==============
 
