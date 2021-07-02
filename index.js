@@ -160,7 +160,7 @@ const parseAsType = {
 			if (swagger.pattern) delete swagger.pattern;
 		}
 
-		if (find(schema._rules, { name: 'isoDate' })) {
+		if (find(schema._rules, { name: 'iso' })) {
 			swagger.format = 'date-time';
 			if (swagger.pattern) delete swagger.pattern;
 		}
@@ -191,7 +191,13 @@ const parseAsType = {
 
 		return swagger;
 	},
-	date: (/* schema */) => ({ type: 'string', format: 'date-time' }),
+	date: (schema) => { 
+		const swagger = { type: 'string', format: 'date-time' };
+		if (get(schema, '_flags.format') === 'YYYY-MM-DD') {
+			swagger.format = 'date';
+		}
+		return swagger;
+	},
 	boolean: (/* schema */) => ({ type: 'boolean' }),
 	alternatives: (schema, existingComponents, newComponentsByRef) => {
 		const matches = get(schema, '$_terms.matches');
